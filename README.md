@@ -1,6 +1,6 @@
 # Workshop ERP — localhost public-copy workbench
 
-The [project page](https://simonsystem609.github.io/Workshop_ERP/) introduces
+The [project page](https://simonsystem609.github.io/ERP_Workshop/) introduces
 the synthetic screenshot gallery and the limits of this local demo.
 
 This folder contains a generic, English-interface, synthetic-data ERP copy under development,
