@@ -6,7 +6,7 @@ import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 export const SOURCE_FILES = Object.freeze([
-  ".gitignore", "AGENTS.md", "CUSTOMIZE.md", "ERP-HANDOFF.md", "LICENSE", "PROVENANCE-LICENSING.md",
+  ".github/dependabot.yml", ".github/workflows/tests.yml", ".gitignore", "AGENTS.md", "CUSTOMIZE.md", "ERP-HANDOFF.md", "LICENSE", "PROVENANCE-LICENSING.md",
   "PUBLICATION-STATUS.md", "PRIVACY-REVIEW.md", "README.md", "WORKLOG-IMPORT.md",
   "app/ORIGINAL-BACKEND.md", "app/package.json", "app/server.js",
   "app/storageSafety.js", "app/hostEnrollment.js", "app/projectContinuity.js",
@@ -39,7 +39,7 @@ export const SOURCE_FILES = Object.freeze([
   "config.example.json", "demo-auth.mjs", "demo-documents.mjs", "demo-images.mjs", "demo-ocr.mjs",
   "demo-modelling.mjs", "demo-project-browser.mjs", "demo-project-scan.mjs", "demo-server.mjs", "demo-store.mjs",
   "demo-worklog-import.mjs", "xlsx-demo.mjs", "package.json",
-  "docs/index.html", "docs/images/README.md", "docs/images/cad-models.png", "docs/images/dashboard.png",
+  "docs/index.html", "docs/gallery.html", "docs/images/README.md", "docs/images/cad-models.png", "docs/images/dashboard.png",
   "docs/images/materials-mobile.png", "docs/images/materials.png", "docs/images/model-viewer.png",
   "docs/images/modelling.png", "docs/images/projects.png", "docs/images/settings.png",
   "docs/images/suppliers.png", "docs/images/worklog.png",

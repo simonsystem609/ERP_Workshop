@@ -1,7 +1,8 @@
 # Workshop ERP — localhost public-copy workbench
 
 The [project page](https://simonsystem609.github.io/ERP_Workshop/) introduces
-the synthetic screenshot gallery and the limits of this local demo.
+the [full synthetic screenshot gallery](https://simonsystem609.github.io/ERP_Workshop/gallery.html)
+and the limits of this local demo.
 
 This folder contains a generic, English-interface, synthetic-data ERP copy under development,
 not the company's database. All 25 original menu views are present. It binds
