@@ -1746,7 +1746,7 @@ function render() {
         renderModellingPage();
         return;
     }
-    if (globalThis.ERP_DEMO_CONFIG && !DEMO_VIEWS.has(currentView)) currentView = "dashboard";
+    if (!DEMO_VIEWS.has(currentView)) currentView = "dashboard";
     const restoreState = captureRenderState();
     renderNav();
     const view = VIEWS.find(([id]) => id === currentView) || VIEWS[0];
@@ -1809,7 +1809,8 @@ function render() {
     };
 
     projectPickerSeq = 0;
-    app.innerHTML = (views[currentView] || renderDashboard)();
+    const renderCurrentView = Object.hasOwn(views, currentView) ? views[currentView] : renderDashboard;
+    app.innerHTML = renderCurrentView();
     renderModal();
     applyDeleteButtonPermissions(document);
     restoreRenderState(restoreState);
@@ -7140,7 +7141,9 @@ async function handleClick(event) {
             return;
         }
         if (action === "view") {
-            currentView = target.dataset.view;
+            const requestedView = target.dataset.view;
+            if (!DEMO_VIEWS.has(requestedView)) return;
+            currentView = requestedView;
             if (LEVEL2_VIEWS.has(currentView) && !hasFinanceClearance()) {
                 financeState = null;
                 toastMessage("Nincs jogosultság ehhez a menühöz.", true);
@@ -7168,7 +7171,9 @@ async function handleClick(event) {
             return;
         }
         if (action === "open-personal-task-view") {
-            currentView = target.dataset.view || "todos";
+            const requestedView = target.dataset.view || "todos";
+            if (!DEMO_VIEWS.has(requestedView)) return;
+            currentView = requestedView;
             personalTasksOpen = false;
             if (currentView === "todos") taskUserFilter = currentUser?.id || "";
             modalRoot.innerHTML = "";

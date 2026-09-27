@@ -126,6 +126,13 @@ test("all-menu local API persists in an isolated demo SQLite database", async ()
     const uploaded = await fetch(`${base}/api/boms/upload?projectId=demo-project-a&name=Uploaded`, { method: "POST", headers: { Origin: base, "X-File-Name": encodeURIComponent("sample.xlsx") }, body: fs.readFileSync(sampleXlsx) });
     assert.equal(uploaded.status, 201);
     assert.equal((await uploaded.json()).items.length, 1);
+    const malformedUpload = await fetch(`${base}/api/boms/upload?projectId=demo-project-a&name=Malformed`, { method: "POST", headers: { Origin: base, "X-File-Name": encodeURIComponent("malformed.xlsx") }, body: Buffer.from("not a workbook") });
+    assert.equal(malformedUpload.status, 201);
+    const malformedBom = await malformedUpload.json();
+    assert.equal(malformedBom.importError, "Could not read this BOM file. Check the format and try again.");
+    assert.deepEqual(malformedBom.items, []);
+    const savedMalformedBom = (await call("/api/state")).data.boms.find((item) => item.id === malformedBom.id);
+    assert.equal(savedMalformedBom.importError, malformedBom.importError);
     const linkedWorklog = await call("/api/worklogs", "POST", { projectId: "demo-project-a", userId: "demo-user", workType: "Design", hours: 1, filePath: "documents/sample.xlsx" });
     assert.equal(linkedWorklog.fileName, "sample.xlsx");
     const todo = await call("/api/dashboard/todos", "POST", { text: "Demo image todo", imageDataUrl: pixel });

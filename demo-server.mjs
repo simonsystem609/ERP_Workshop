@@ -956,7 +956,7 @@ const server = http.createServer(async (req, res) => {
       const filePath = path.join(uploadDir, `${randomUUID()}-${filename}`);
       fs.writeFileSync(filePath, bytes, { flag: "wx" });
       let items = [], importError = "";
-      try { items = bomItems(spreadsheetRows(bytes, filename)); } catch (error) { importError = String(error.message || error); }
+      try { items = bomItems(spreadsheetRows(bytes, filename)); } catch { importError = "Could not read this BOM file. Check the format and try again."; }
       const item = { id: randomUUID(), projectId, projectName: projects[projectId].name,
         name: String(query.get("name") || path.parse(filename).name).slice(0, 160), revision: String(query.get("revision") || "").slice(0, 80),
         kind: "upload", fileName: filename, path: filePath, size: bytes.length, items, importError,
