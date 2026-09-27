@@ -1,0 +1,30 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Prepare synthetic localhost config
+        run: npm run setup
+      - name: Check configuration and source tests
+        run: |
+          npm run check
+          npm test
+      - name: Check bundled GLB viewer source
+        working-directory: app/vendor/erp-glb-viewer-source
+        run: |
+          npm ci
+          npm test
