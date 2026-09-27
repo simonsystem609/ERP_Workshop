@@ -196,6 +196,27 @@ try {
       }
     }
   }
+  await cdp("Page.navigate", { url: `${base}/?view=dashboard` });
+  await waitForText("General tasks");
+  const invalidNavigation = await evaluate(`(async () => {
+    const outcomes = [];
+    for (const action of ["view", "open-personal-task-view"]) {
+      for (const value of ["toString", "__proto__", "constructor", "unknown-view"]) {
+        const button = document.createElement("button");
+        button.dataset.action = action;
+        button.dataset.view = value;
+        document.body.append(button);
+        button.click();
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        outcomes.push({ action, value, view: currentView });
+        button.remove();
+      }
+    }
+    return outcomes;
+  })()`);
+  if (invalidNavigation.some(({ view }) => view !== "dashboard")) {
+    throw new Error(`Invalid view action changed the active view: ${JSON.stringify(invalidNavigation)}`);
+  }
   if (captureAllMenus) {
     await cdp("Page.navigate", { url: `${base}/?view=worklog` });
     await waitForText("Log work time");

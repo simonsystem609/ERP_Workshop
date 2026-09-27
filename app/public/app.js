@@ -1746,7 +1746,7 @@ function render() {
         renderModellingPage();
         return;
     }
-    if (globalThis.ERP_DEMO_CONFIG && !DEMO_VIEWS.has(currentView)) currentView = "dashboard";
+    if (!DEMO_VIEWS.has(currentView)) currentView = "dashboard";
     const restoreState = captureRenderState();
     renderNav();
     const view = VIEWS.find(([id]) => id === currentView) || VIEWS[0];
@@ -1778,38 +1778,39 @@ function render() {
         return;
     }
 
-    const views = {
-        dashboard: renderDashboard,
-        "project-view": renderProjectView,
-        "cnc-summary": renderCncSummary,
-        todos: renderTodos,
-        cnc: renderCnc,
-        tools: renderTools,
-        materials: renderMaterials,
-        fasteners: renderFasteners,
-        worklog: renderWorklog,
-        bom: renderBom,
-        "cad-models": renderCadModels,
-        suppliers: renderSuppliers,
-        "price-items": renderPriceItems,
-        "cost-planning": renderCostPlanning,
-        outsourcing: renderOutsourcing,
-        "production-items": renderProductionItems,
-        design: renderDesign,
-        quotes: renderQuotes,
-        "engineering-notes": renderEngineeringNotes,
-        "finance-reports": renderFinanceReports,
-        production: renderProduction,
-        projects: renderProjects,
-        parameters: renderParameters,
-        users: renderUsers,
-        catalog: renderCatalog,
-        stats: renderSettings,
-        archive: renderArchive
-    };
-
     projectPickerSeq = 0;
-    app.innerHTML = (views[currentView] || renderDashboard)();
+    let viewMarkup;
+    switch (currentView) {
+        case "dashboard": viewMarkup = renderDashboard(); break;
+        case "project-view": viewMarkup = renderProjectView(); break;
+        case "cnc-summary": viewMarkup = renderCncSummary(); break;
+        case "todos": viewMarkup = renderTodos(); break;
+        case "cnc": viewMarkup = renderCnc(); break;
+        case "tools": viewMarkup = renderTools(); break;
+        case "materials": viewMarkup = renderMaterials(); break;
+        case "fasteners": viewMarkup = renderFasteners(); break;
+        case "worklog": viewMarkup = renderWorklog(); break;
+        case "bom": viewMarkup = renderBom(); break;
+        case "cad-models": viewMarkup = renderCadModels(); break;
+        case "suppliers": viewMarkup = renderSuppliers(); break;
+        case "price-items": viewMarkup = renderPriceItems(); break;
+        case "cost-planning": viewMarkup = renderCostPlanning(); break;
+        case "outsourcing": viewMarkup = renderOutsourcing(); break;
+        case "production-items": viewMarkup = renderProductionItems(); break;
+        case "design": viewMarkup = renderDesign(); break;
+        case "quotes": viewMarkup = renderQuotes(); break;
+        case "engineering-notes": viewMarkup = renderEngineeringNotes(); break;
+        case "finance-reports": viewMarkup = renderFinanceReports(); break;
+        case "production": viewMarkup = renderProduction(); break;
+        case "projects": viewMarkup = renderProjects(); break;
+        case "parameters": viewMarkup = renderParameters(); break;
+        case "users": viewMarkup = renderUsers(); break;
+        case "catalog": viewMarkup = renderCatalog(); break;
+        case "stats": viewMarkup = renderSettings(); break;
+        case "archive": viewMarkup = renderArchive(); break;
+        default: viewMarkup = renderDashboard(); break;
+    }
+    app.innerHTML = viewMarkup;
     renderModal();
     applyDeleteButtonPermissions(document);
     restoreRenderState(restoreState);
@@ -7140,7 +7141,9 @@ async function handleClick(event) {
             return;
         }
         if (action === "view") {
-            currentView = target.dataset.view;
+            const requestedView = target.dataset.view;
+            if (!DEMO_VIEWS.has(requestedView)) return;
+            currentView = requestedView;
             if (LEVEL2_VIEWS.has(currentView) && !hasFinanceClearance()) {
                 financeState = null;
                 toastMessage("Nincs jogosultság ehhez a menühöz.", true);
@@ -7168,7 +7171,9 @@ async function handleClick(event) {
             return;
         }
         if (action === "open-personal-task-view") {
-            currentView = target.dataset.view || "todos";
+            const requestedView = target.dataset.view || "todos";
+            if (!DEMO_VIEWS.has(requestedView)) return;
+            currentView = requestedView;
             personalTasksOpen = false;
             if (currentView === "todos") taskUserFilter = currentUser?.id || "";
             modalRoot.innerHTML = "";
