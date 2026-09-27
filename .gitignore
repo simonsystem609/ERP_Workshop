@@ -1,0 +1,43 @@
+# Keep any future local runtime data or credentials out of a repository.
+app/config.json
+config.json
+app/.local-data/
+app/cloudflared/
+app/node/
+app/tesseract/
+app/logs/
+app/helper/*.exe
+data/
+imports/*
+!imports/cadmodels/
+imports/cadmodels/*
+!imports/cadmodels/demo-synthetic-box.glb
+!imports/cadmodels/demo-synthetic-box.json
+uploads/
+logs/
+*.db
+*.db-*
+*.log
+*token*.txt
+*.key
+*.pem
+*.p12
+*.pfx
+node_modules/
+.demo-data/
+config.private.json
+*.private.json
+private-profile/
+*-private-profile/
+.chrome-profile/
+*.tmp
+
+# Retained internal source references are not part of the runnable demo or a
+# running server. The original backend source is now intentionally visible
+# to the source-review allowlist, but its startup guard remains in place.
+# Real host launchers remain private references. The generic public wrappers
+# call a fail-closed adapter and cannot install or start the guarded backend.
+SOURCE-MANIFEST.json
+app/host-reference/
+app/public/assets/
+app/vendor/erp-glb-viewer-source/dist/

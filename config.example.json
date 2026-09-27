@@ -1,0 +1,172 @@
+{
+  "mode": "localhost-demo",
+  "port": 4777,
+  "futureHosting": {
+    "schemaVersion": 1,
+    "status": "reference-only",
+    "organization": { "locale": "en-GB", "timeZone": "UTC", "currency": "EUR" },
+    "storage": {
+      "canonicalShare": "",
+      "mappedDrive": "",
+      "erpRoot": "",
+      "appDirectory": "",
+      "dataDirectory": "",
+      "databaseFile": "",
+      "projectRoots": [],
+      "excludedProjectPaths": [],
+      "worklogInbox": "",
+      "cadModelInbox": "",
+      "cadModelCache": "",
+      "modellingPhotos": "",
+      "trashDirectory": "",
+      "logsDirectory": "",
+      "uploadsDirectory": ""
+    },
+    "server": {
+      "host": "",
+      "port": 4780,
+      "localAuthRequired": true,
+      "internetEnabled": false,
+      "internetHost": "",
+      "internetPort": 4781,
+      "httpsEnabled": false,
+      "httpsHost": "",
+      "httpsPort": 4782,
+      "publicHost": "",
+      "publicHttpsPort": 443,
+      "scanIntervalSeconds": 10,
+      "allowedIpPrefixes": []
+    },
+    "cloudflare": {
+      "enabled": false,
+      "tunnelType": "remotely-managed",
+      "publicHostname": "",
+      "originUrl": "http://127.0.0.1:4780",
+      "binaryPath": "",
+      "tokenSourceFile": "",
+      "tokenLocalFile": ""
+    },
+    "watchdog": {
+      "enabled": false,
+      "singleActiveHost": true,
+      "hostLockFile": "",
+      "hostSwitchFile": "",
+      "heartbeatDirectory": "",
+      "startupInstaller": "",
+      "standbyLauncher": "",
+      "hostNicknames": {}
+    },
+    "helper": {
+      "enabled": false,
+      "url": "http://127.0.0.1:4799",
+      "sourceScript": "",
+      "localInstallRoot": ""
+    },
+    "backups": {
+      "enabled": false,
+      "automaticRoot": "",
+      "manualRoot": "",
+      "keepLatestAutomatic": 3,
+      "keepLatestManual": 3,
+      "trashOnly": true
+    }
+  },
+  "scanRoots": [],
+  "ocr": { "mode": "disabled" },
+  "appName": "Workshop ERP Demo",
+  "cadModelFormat": "workshop-cadmodel",
+  "companyNames": ["Example Workshop Ltd"],
+  "activeUserId": "demo-user",
+  "overtimeUserIds": ["demo-user"],
+  "overtimeViewerIds": ["demo-user", "demo-colleague"],
+  "users": [
+    { "id": "demo-user", "name": "Demo User", "clearanceLevel": 2 },
+    { "id": "demo-colleague", "name": "Demo Colleague", "clearanceLevel": 1 }
+  ],
+  "projects": [
+    { "id": "demo-project-a", "name": "DEMO-001 Conveyor Prototype", "company": "Example Workshop Ltd", "active": true, "priority": 1 },
+    { "id": "demo-project-b", "name": "DEMO-002 Fixture Design", "company": "Example Workshop Ltd", "active": true, "priority": 2 }
+  ],
+  "catalogs": {
+    "materialNames": ["S235", "C45", "Aluminium"],
+    "materialTypes": ["bar", "sheet", "tube"],
+    "materialLengths": ["1000", "3000", "6000"],
+    "workTypes": ["Design", "Machining", "Assembly"],
+    "fastenerTypes": ["bolt", "nut", "washer"],
+    "fastenerGrades": ["8.8", "10.9"],
+    "fastenerSizes": ["M6", "M8"],
+    "toolNames": ["End mill", "Drill"],
+    "externalCompanies": ["Example Partner Ltd"],
+    "prefabTaskTypes": ["Assembly transport"]
+  },
+  "financeSettings": {
+    "categories": ["Material", "Labor", "External"],
+    "currencies": ["HUF", "EUR"],
+    "statuses": ["Planned", "Ordered", "Done"],
+    "quoteStatuses": ["Draft", "Sent", "Accepted"],
+    "noteTypes": ["Design", "Production"],
+    "noteStatuses": ["Open", "Closed"],
+    "outsourceOperations": ["Cutting", "Coating"],
+    "outsourceStatuses": ["Planned", "In progress", "Done"],
+    "productionOperations": ["Milling", "Assembly"]
+  },
+  "sampleData": {
+    "dashboardTodos": [
+      { "id": "demo-todo-a", "text": "Review sample assembly drawing", "createdAt": "2026-09-25T09:00:00.000Z" },
+      { "id": "demo-todo-b", "text": "Confirm demonstration material list", "createdAt": "2026-09-24T11:30:00.000Z" }
+    ],
+    "tasks": [
+      { "id": "demo-task-a", "title": "Prepare prototype drawing", "projectId": "demo-project-a", "userId": "demo-user", "createdAt": "2026-09-23T10:00:00.000Z" }
+    ],
+    "materialRequests": [
+      { "id": "demo-material-a", "material": "S235", "size": "40 × 40", "length": "3000", "type": "bar", "quantity": 4, "projectId": "demo-project-a", "userId": "demo-user", "createdAt": "2026-09-25T08:15:00.000Z" },
+      { "id": "demo-material-b", "material": "Aluminium", "size": "10 mm", "length": "1200", "type": "sheet", "quantity": 2, "projectId": "demo-project-b", "userId": "demo-colleague", "createdAt": "2026-09-24T12:00:00.000Z" }
+    ],
+    "toolRequests": [
+      { "id": "demo-tool-a", "toolName": "End mill", "quantity": 2, "projectId": "demo-project-a", "userId": "demo-user", "createdAt": "2026-09-23T07:30:00.000Z" }
+    ],
+    "fastenerRequests": [
+      { "id": "demo-fastener-a", "type": "bolt", "grade": "8.8", "size": "M8", "quantity": 12, "projectId": "demo-project-b", "userId": "demo-colleague", "createdAt": "2026-09-24T08:00:00.000Z" }
+    ],
+    "workLogs": [
+      { "id": "demo-log-a", "projectId": "demo-project-a", "userId": "demo-user", "hours": 3, "workType": "Design", "workDate": "2026-09-25", "note": "Concept review", "createdAt": "2026-09-25T15:00:00.000Z" },
+      { "id": "demo-log-b", "projectId": "demo-project-b", "userId": "demo-colleague", "hours": 2, "workType": "Assembly", "workDate": "2026-09-24", "note": "Fixture test", "createdAt": "2026-09-24T14:00:00.000Z" }
+    ],
+    "cncTasks": [
+      { "id": "demo-cnc-a", "projectId": "demo-project-a", "userId": "demo-user", "title": "Machine sample bracket", "machineId": "demo-machine-a", "createdAt": "2026-09-24T09:00:00.000Z" }
+    ],
+    "cncMachines": [
+      { "id": "demo-machine-a", "name": "Demo CNC 01", "createdAt": "2026-09-20T08:00:00.000Z" }
+    ],
+    "meetings": [
+      { "id": "demo-meeting-a", "title": "Prototype review", "date": "2026-09-29", "projectId": "demo-project-a", "createdAt": "2026-09-25T08:00:00.000Z" }
+    ],
+    "dayOffs": [
+      { "id": "demo-dayoff-a", "userId": "demo-colleague", "date": "2026-10-02", "createdAt": "2026-09-25T08:00:00.000Z" }
+    ],
+    "financeSuppliers": [
+      { "id": "demo-supplier-a", "name": "Example Partner Ltd", "contact": "Sample Contact", "createdAt": "2026-09-22T10:00:00.000Z" }
+    ],
+    "financePriceItems": [
+      { "id": "demo-price-a", "projectId": "demo-project-a", "name": "Prototype plate", "quantity": 2, "unitPrice": 12000, "createdAt": "2026-09-23T10:00:00.000Z" }
+    ],
+    "financeCostItems": [
+      { "id": "demo-cost-a", "projectId": "demo-project-a", "name": "Material budget", "plannedAmount": 50000, "actualAmount": 34000, "createdAt": "2026-09-23T10:00:00.000Z" }
+    ],
+    "financeOutsourceItems": [
+      { "id": "demo-outsource-a", "projectId": "demo-project-b", "part": "Coated fixture", "status": "Planned", "createdAt": "2026-09-24T10:00:00.000Z" }
+    ],
+    "financeProductionItems": [
+      { "id": "demo-production-a", "projectId": "demo-project-a", "part": "Prototype bracket", "status": "Planned", "createdAt": "2026-09-24T10:00:00.000Z" }
+    ],
+    "financeDesignItems": [
+      { "id": "demo-design-a", "projectId": "demo-project-b", "name": "Fixture layout", "percent": 50, "status": "In progress", "createdAt": "2026-09-24T10:00:00.000Z" }
+    ],
+    "financeQuotes": [
+      { "id": "demo-quote-a", "projectId": "demo-project-a", "name": "Prototype quote", "amount": 120000, "status": "Draft", "createdAt": "2026-09-24T10:00:00.000Z" }
+    ],
+    "financeEngineeringNotes": [
+      { "id": "demo-note-a", "projectId": "demo-project-b", "title": "Review mounting holes", "status": "Open", "createdAt": "2026-09-24T10:00:00.000Z" }
+    ]
+  }
+}

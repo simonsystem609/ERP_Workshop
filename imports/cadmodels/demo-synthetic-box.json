@@ -1,0 +1,13 @@
+{
+  "format": "workshop-cadmodel",
+  "formatVersion": 1,
+  "glbFile": "demo-synthetic-box.glb",
+  "source": {
+    "type": "assembly",
+    "name": "Synthetic_Box.SLDASM",
+    "root": "C:\\Examples\\Demo Project"
+  },
+  "projectName": "Demo Project",
+  "exportedAt": "2026-09-25T12:00:00.000Z",
+  "bytes": 1464
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workshop ERP</title>
+    <meta name="theme-color" content="#0f766e">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Workshop ERP">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+    <link rel="apple-touch-icon" href="/images/logo.svg">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="stylesheet" href="/styles.css?v=20260926-password-reminder1">
+  </head>
+  <body class="local-demo">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <img src="/images/logo.svg" alt="">
+          <span>ERP</span>
+        </div>
+        <nav id="nav"></nav>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="view-title">Dashboard</h1>
+            <p id="view-subtitle"></p>
+          </div>
+          <div class="status-strip">
+            <div id="project-notice-root" hidden></div>
+            <span id="server-status">Connecting...</span>
+            <button class="primary-button personal-tasks-button" type="button" data-action="personal-tasks">Personal tasks</button>
+            <button class="icon-button" id="refresh-button" type="button" title="Refresh">↻</button>
+            <button class="small-button" id="logout-button" type="button" hidden>Sign out</button>
+          </div>
+        </header>
+        <div class="demo-ribbon" role="status">LOCAL DEMO · synthetic data · changes persist in a separate local SQLite database · <a href="/SOURCE.zip" download="workshop-erp-source.zip">AGPL source code</a> · <a href="/LICENSE">license</a></div>
+        <section id="app"></section>
+      </main>
+    </div>
+    <div id="modal-root"></div>
+    <div id="cad-viewer-root"></div>
+    <dialog id="project-notice-dialog" class="project-notice-dialog" aria-labelledby="project-notice-title"></dialog>
+    <div id="toast" class="toast"></div>
+    <script src="/demo-config.js"></script>
+    <script src="/english-ui.js?v=20260927-en3"></script>
+    <script src="/app.js?v=20260927-english-ui1"></script>
+  </body>
+</html>

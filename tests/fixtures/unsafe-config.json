@@ -1,0 +1,10 @@
+{
+  "mode": "localhost-demo",
+  "port": 4777,
+  "host": "0.0.0.0",
+  "appName": "Unsafe fixture",
+  "companyNames": ["Example"],
+  "activeUserId": "demo",
+  "users": [{ "id": "demo", "name": "Demo", "clearanceLevel": 1 }],
+  "projects": []
+}

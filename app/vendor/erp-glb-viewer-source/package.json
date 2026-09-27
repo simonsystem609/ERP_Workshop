@@ -1,0 +1,22 @@
+{
+  "name": "erp-glb-viewer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Standalone, embeddable GLB viewer based on ExampleCADView's 3D navigation",
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "package:source": "node scripts/package-source.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "npm run build && node tests/browser-smoke.mjs",
+    "start": "npm run build && node server.mjs"
+  },
+  "dependencies": {
+    "three": "0.160.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "playwright-core": "^1.63.0"
+  }
+}

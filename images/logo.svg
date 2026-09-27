@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 84" role="img" aria-label="Generic workshop logo">
+  <rect width="240" height="84" rx="14" fill="#13252c"/>
+  <path d="M19 21h15l9 34 9-25h11l9 25 9-34h15L81 64H67L57 40 47 64H33z" fill="#ff6b12"/>
+  <text x="115" y="43" fill="#fff" font-family="Arial,sans-serif" font-size="21" font-weight="700">WORKSHOP</text>
+  <text x="116" y="63" fill="#a8bec2" font-family="Arial,sans-serif" font-size="12" letter-spacing="4">ERP DEMO</text>
+</svg>
