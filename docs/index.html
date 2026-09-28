@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore Workshop ERP, an open-source localhost demo for engineering and manufacturing workflows, with 25 views and synthetic data.">
-  <title>Workshop ERP — open workshop workflow demo</title>
+  <meta name="description" content="Workshop ERP is a free, open-source ERP backbone and template with 25 views. Explore its local source demo and synthetic screenshots.">
+  <title>Workshop ERP — free open-source ERP template</title>
   <style>
     :root { --ink:#182326; --muted:#59676a; --paper:#f7f8f4; --line:#dce4df; --orange:#f36b21; --dark:#102429; --lime:#d9ed81; }
     * { box-sizing:border-box; }
@@ -55,7 +55,7 @@
     .feature h3 { margin:0 0 7px; font-size:1.16rem; }
     .feature p { margin:0; color:var(--muted); font-size:.94rem; }
     figure { margin:0; padding:10px; border:1px solid var(--line); border-radius:14px; background:#fff; }
-    figure img { display:block; width:100%; aspect-ratio:1.65; object-fit:cover; object-position:top left; border:1px solid #e1e5e1; border-radius:8px; }
+    figure img { display:block; width:100%; height:auto; border:1px solid #e1e5e1; border-radius:8px; }
     figcaption { padding:12px 6px 3px; font-size:.91rem; font-weight:800; }
     .gallery-foot { margin:23px 0 0; color:var(--muted); }
     .gallery-foot a { color:#a94d20; font-weight:800; }
@@ -81,19 +81,19 @@
   </nav></header>
   <main id="top">
     <div class="hero"><div class="hero-grid wrap">
-      <div><span class="eyebrow">Open-source localhost demo</span><h1>One place for the <span>work behind the work.</span></h1>
-        <p class="lead">Explore a workshop ERP shaped by real engineering and manufacturing workflows—projects, tasks, requests, worklogs, documents and 3D models—in a synthetic-data copy you run on your own PC.</p>
+      <div><span class="eyebrow">Free open-source ERP template</span><h1>One place for the <span>work behind the work.</span></h1>
+        <p class="lead">Based on a field-tested implementation, this free ERP backbone covers projects, tasks, requests, worklogs, documents and 3D models. The downloadable source runs locally with synthetic starter data and is ready to adapt.</p>
         <div class="actions"><a class="button primary" href="#start">Run it locally →</a><a class="button secondary" href="#gallery">Explore the screens</a></div>
         <p class="hero-note">25 views · persistent local sample data · AGPL-3.0-or-later</p>
       </div>
       <div class="hero-shot"><img class="screen" src="images/dashboard.png" width="1600" height="1000" alt="Synthetic ERP dashboard showing tasks, meetings and navigation"><span class="shot-label">Real interface. Synthetic records.</span></div>
     </div></div>
     <section aria-labelledby="why-title"><div class="wrap">
-      <div class="section-head"><div><span class="kicker">Built for everyday operations</span><h2 id="why-title">A practical system, made shareable.</h2></div><p>This public copy keeps the breadth of the original interface while replacing company records with generic examples and keeping all data on the local machine.</p></div>
+      <div class="section-head"><div><span class="kicker">Built for everyday operations</span><h2 id="why-title">A working foundation, made shareable.</h2></div><p>The free template includes a broad, locally runnable ERP interface and persistent records. Its financial side is unfinished; a shared deployment needs substantial setup and customization.</p></div>
       <div class="metrics"><div class="metric"><strong>25</strong><span>menu views</span></div><div class="metric"><strong>Local</strong><span>loopback-only server</span></div><div class="metric"><strong>SQLite</strong><span>persistent demo records</span></div><div class="metric"><strong>Open</strong><span>source and build files</span></div></div>
     </div></section>
     <section class="workflow" id="workflow" aria-labelledby="workflow-title"><div class="wrap">
-      <div class="section-head"><div><span class="kicker">Follow a job from idea to floor</span><h2 id="workflow-title">Connected workshop workflows.</h2></div><p>The demo has working local records and deliberately limited integrations. It is useful for exploration and adaptation—not a drop-in production deployment.</p></div>
+      <div class="section-head"><div><span class="kicker">Follow a job from idea to floor</span><h2 id="workflow-title">Connected workshop workflows.</h2></div><p>Many core workflows already work locally. The source is intended for exploration and adaptation, not yet a drop-in shared deployment.</p></div>
       <div class="features">
         <div class="feature"><span class="number">01</span><div><h3>Plan projects and work</h3><p>Coordinate project records, tasks, CNC work, priorities and a production schedule.</p></div></div>
         <div class="feature"><span class="number">02</span><div><h3>Request what a job needs</h3><p>Track materials, fasteners and tools, with local document links and simple BOM imports.</p></div></div>
@@ -102,7 +102,7 @@
       </div>
     </div></section>
     <section id="gallery" aria-labelledby="gallery-title"><div class="wrap">
-      <div class="section-head"><div><span class="kicker">A look inside</span><h2 id="gallery-title">The interface, without company data.</h2></div><p>These approved screenshots come from a separate synthetic localhost profile. No production database or live company page was used.</p></div>
+      <div class="section-head"><div><span class="kicker">A look inside</span><h2 id="gallery-title">The interface, with synthetic data.</h2></div><p>These screenshots come from a separate local sample profile. They contain no private records.</p></div>
       <div class="gallery">
         <figure><img src="images/materials.png" width="1600" height="1000" loading="lazy" alt="Material request form and synthetic sample requests"><figcaption>Materials and requests</figcaption></figure>
         <figure><img src="images/worklog.png" width="1600" height="1000" loading="lazy" alt="Synthetic worklog and time-entry controls"><figcaption>Worklogs and time</figcaption></figure>
@@ -112,7 +112,7 @@
       <p class="gallery-foot">See the <a href="gallery.html">complete 25-menu gallery and function views →</a></p>
     </div></section>
     <section class="start" id="start" aria-labelledby="start-title"><div class="wrap">
-      <div class="start-grid"><div><span class="eyebrow">Try the source</span><h2 id="start-title">Run the demo on your PC.</h2><p>Install Node.js 22.5 or newer, clone the repository, then create the editable local config once. The server binds only to <code>127.0.0.1</code>; it does not connect to a company database or start a tunnel.</p><a class="button primary" href="https://github.com/simonsystem609/ERP_Workshop#run">Setup and source on GitHub →</a></div>
+      <div class="start-grid"><div><span class="eyebrow">Try the source</span><h2 id="start-title">Run the template locally.</h2><p>Install Node.js 22.5 or newer, clone the repository, then create the editable local config once. The current server binds only to <code>127.0.0.1</code>; it does not start a tunnel or shared host.</p><a class="button primary" href="https://github.com/simonsystem609/ERP_Workshop#run">Setup and source on GitHub →</a></div>
         <div class="terminal"><div class="terminal-head">● ● ● &nbsp; Local terminal</div><pre>git clone https://github.com/simonsystem609/ERP_Workshop.git
 cd ERP_Workshop
 npm run setup
@@ -121,7 +121,7 @@ npm start
 
 # Open http://127.0.0.1:4777/</pre></div>
       </div>
-      <div class="boundary"><h3>Honest demo boundary</h3><p>The finance area is incomplete. The original company backend is included as guarded source and cannot start; Helper, push, hosted authentication and multi-PC/Cloudflare operation are not enabled. The default sample mode has no login. Do not put private records into a publishable profile or expose this server beyond localhost.</p></div>
+      <div class="boundary"><h3>Current deployment boundary</h3><p>The financial side is incomplete. A fuller backend and host-script skeleton are included for adaptation, but the current download is not yet deployable over LAN, Cloudflare Tunnel or multiple hosts. The default sample mode has no login; optional local passwords are not a hosted-security review. Do not expose this server beyond localhost.</p></div>
     </div></section>
   </main>
   <footer><div class="foot wrap"><span>Workshop ERP · synthetic localhost demo · AGPL-3.0-or-later</span><span><a href="https://github.com/simonsystem609/ERP_Workshop">Repository</a> · <a href="https://github.com/simonsystem609/ERP_Workshop/blob/main/LICENSE">License</a> · <a href="https://github.com/simonsystem609/ERP_Workshop/blob/main/ERP-HANDOFF.md">Architecture and limits</a></span></div></footer>
