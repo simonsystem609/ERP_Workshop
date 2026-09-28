@@ -34,9 +34,8 @@
     .section-head p { max-width:350px; margin:0; color:var(--muted); }
     .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:19px; }
     .card { min-width:0; margin:0; padding:10px; border:1px solid var(--line); border-radius:14px; background:#fff; }
-    .image-link { display:block; overflow:hidden; border:1px solid #e1e5e1; border-radius:8px; }
-    .image-link img { display:block; width:100%; aspect-ratio:1.65; object-fit:cover; object-position:top left; transition:transform .2s ease; }
-    .image-link:hover img { transform:scale(1.025); }
+    .image-link { display:block; border:1px solid #e1e5e1; border-radius:8px; }
+    .image-link img { display:block; width:100%; height:auto; border-radius:7px; }
     figcaption { display:grid; gap:2px; padding:11px 5px 4px; }
     figcaption strong { font-size:.98rem; }
     figcaption span { color:var(--muted); font-size:.86rem; }
@@ -47,12 +46,12 @@
     footer a { color:#e4eee9; }
     @media (max-width:900px) { .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     @media (max-width:620px) { .wrap { width:calc(100% - 28px); } .hero { padding:53px 0 59px; } section { padding-top:55px; } .section-head { display:block; } .section-head p { margin-top:13px; } .grid { grid-template-columns:1fr; } footer .wrap { flex-direction:column; } }
-    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .image-link img { transition:none; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
 </head>
 <body>
   <header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">W</span>WORKSHOP ERP</a><a class="back" href="index.html">← Project page</a></nav></header>
-  <div class="hero"><div class="wrap"><span class="eyebrow">Synthetic localhost gallery</span><h1>Every view of the workshop.</h1><p class="lead">All 25 menu screens and four function views from a separate synthetic demo profile. Select an image to see it at full size. These are interface previews, not a hosted ERP or production records.</p><nav class="jump" aria-label="Gallery sections"><a href="#overview">Overview</a><a href="#operations">Operations</a><a href="#engineering">Engineering &amp; finance</a><a href="#administration">Administration</a><a href="#functions">Function views</a></nav></div></div>
+  <div class="hero"><div class="wrap"><span class="eyebrow">Free ERP template · synthetic gallery</span><h1>Every view of the workshop.</h1><p class="lead">All 25 menu screens and four function views from a separate synthetic local profile. Each captured frame keeps its original proportions; select one for its original size. These previews contain no private records.</p><nav class="jump" aria-label="Gallery sections"><a href="#overview">Overview</a><a href="#operations">Operations</a><a href="#engineering">Engineering &amp; finance</a><a href="#administration">Administration</a><a href="#functions">Function views</a></nav></div></div>
   <main class="wrap">
     <section id="overview" aria-labelledby="overview-title"><div class="section-head"><div><span class="kicker">01 / OVERVIEW</span><h2 id="overview-title">From a project to the floor</h2></div><p>3 synthetic menu views</p></div><div class="grid">
         <figure class="card"><a class="image-link" href="images/menus/01-dashboard.png" aria-label="Open full-size Dashboard screenshot"><img src="images/menus/01-dashboard.png" loading="lazy" decoding="async" alt="Synthetic Workshop ERP Dashboard screen"></a><figcaption><strong>Dashboard</strong><span>Tasks, meetings, and at-a-glance status</span></figcaption></figure>
@@ -93,7 +92,7 @@
         <figure class="card"><a class="image-link" href="images/functions/modelling.png" aria-label="Open full-size Modelling photos screenshot"><img src="images/functions/modelling.png" loading="lazy" decoding="async" alt="Synthetic Workshop ERP Modelling photos screen"></a><figcaption><strong>Modelling photos</strong><span>Profile-local image workspace</span></figcaption></figure>
         <figure class="card"><a class="image-link" href="images/functions/model-viewer.png" aria-label="Open full-size In-page 3D viewer screenshot"><img src="images/functions/model-viewer.png" loading="lazy" decoding="async" alt="Synthetic Workshop ERP In-page 3D viewer screen"></a><figcaption><strong>In-page 3D viewer</strong><span>A synthetic GLB box rendered in the browser</span></figcaption></figure>
       </div></section>
-    <aside class="note"><p>All records and files shown here are synthetic. The downloadable source runs only on <code>127.0.0.1</code>; finance and hosted features remain incomplete. See the <a href="https://github.com/simonsystem609/ERP_Workshop">repository and setup notes</a> before running it.</p></aside>
+    <aside class="note"><p>All records and files shown here are synthetic. The downloadable source currently runs only on <code>127.0.0.1</code>; finance and shared-host deployment remain incomplete. See the <a href="https://github.com/simonsystem609/ERP_Workshop">repository and setup notes</a> before running it.</p></aside>
   </main>
   <footer><div class="wrap"><span>Workshop ERP · synthetic localhost demo · AGPL-3.0-or-later</span><span><a href="index.html">Project page</a> · <a href="https://github.com/simonsystem609/ERP_Workshop">Source</a></span></div></footer>
 </body>

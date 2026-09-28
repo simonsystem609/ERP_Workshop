@@ -1,19 +1,16 @@
-# Workshop ERP — localhost public-copy workbench
+# Workshop ERP — free open-source ERP backbone
 
 The [project page](https://simonsystem609.github.io/ERP_Workshop/) introduces
 the [full synthetic screenshot gallery](https://simonsystem609.github.io/ERP_Workshop/gallery.html)
-and the limits of this local demo.
+and the limits of the current local source package.
 
-This folder contains a generic, English-interface, synthetic-data ERP copy under development,
-not the company's database. All 25 original menu views are present. It binds
-only to `127.0.0.1` and stores edits in a separate persistent local SQLite
-database. The default start command never imports the guarded original
-backend or writes to a
-production network share. It is not yet a secure hosted deployment or a
-feature-complete clone.
-The [ERP handoff](ERP-HANDOFF.md) explains how the source system is used
-company-wide as a website for engineering projects and related operations,
-and distinguishes that system from this local demo.
+This free template is based on a working, field-tested ERP. The public source
+contains a generic, English-interface, synthetic-data adaptation with all 25
+menu views and persistent local records. Its financial side is unfinished.
+The current start command binds only to `127.0.0.1`; it does not import the
+guarded fuller backend or write to shared storage. This package is not yet a
+secure LAN, tunnel or multi-host deployment. The [deployment handoff](ERP-HANDOFF.md)
+describes the intended architecture and the code and validation still needed.
 
 ![Synthetic dashboard](docs/images/dashboard.png)
 ![Synthetic material requests](docs/images/materials.png)
@@ -26,7 +23,7 @@ and distinguishes that system from this local demo.
 The [full 25-menu screenshot gallery](docs/images/README.md) and its four
 function captures were taken from a separate synthetic localhost profile.
 It includes the generated GLB cube in the 3D model list/viewer and a small
-synthetic DXF in the project browser. No company database or live ERP page
+synthetic DXF in the project browser. No private database or live ERP page
 was used for these images.
 
 ## Run
@@ -63,7 +60,7 @@ which is the only file-browsing root for this profile. Details and a feature
 matrix are in
 [`CUSTOMIZE.md`](CUSTOMIZE.md).
 The same config template now has a `futureHosting` deployment plan for
-company-specific paths, proposed host ports, Cloudflare token-*file*
+installation-specific paths, proposed host ports, Cloudflare token-*file*
 locations, a single-active-host watchdog, Helper and backups. It is
 reference-only: the localhost server validates but never applies it, and
 the guarded original backend does not read it. Filling every value does
@@ -84,9 +81,9 @@ The intended public ERP source in this folder is licensed under
 **AGPL-3.0-or-later**; see [LICENSE](LICENSE). The bundled GLB viewer uses
 the same license. The viewer's bundled three.js code has a separate MIT
 notice in `app/public/erp-glb-viewer/THIRD-PARTY-LICENSES.txt`.
-The user confirmed company permission covers this exact C-only candidate,
-including the guarded backend/Helper and approved images under that license.
-This is a user attestation; it does not make the demo safe for hosted use or
+The author confirmed publication rights for this exact source set, including
+the guarded backend/Helper and approved images under that license.
+This is an author attestation; it does not make the demo safe for hosted use or
 replace a final check of changed release files.
 The localhost app displays a source-code link on the login and main screens.
 `/SOURCE.zip` contains the explicitly allowlisted ERP source, build scripts,
@@ -135,7 +132,7 @@ Restart after changing source so the served bundle matches the running app.
 - A preserved, startup-disabled copy of the original backend and Helper
   source. `npm.cmd run original:fixture -- --out <new local absolute .db path>`
   creates a fresh original-schema SQLite file from the public sample template,
-  including dummy in-app notices. It never copies the company's DB. The
+  including dummy in-app notices. It never copies a private database. The
   original backend still cannot be used as the demo server.
 
 Helper, a bundled OCR engine,
@@ -186,8 +183,8 @@ for exact-file review can be built outside the project with
 `npm.cmd run package:source -- --out <backup-root>\source-review-001.zip`.
 That archive is not publication approval.
 
-This repository contains the sanitized localhost demo source. The user
-confirmed company permission for this candidate and approved
+This repository contains the sanitized localhost demo source. The author
+confirmed publication rights for this candidate and approved
 AGPL-3.0-or-later. The technical source, privacy, notice and localhost checks
 are recorded in the release notes; repeat the exact staged-tree review for
 future changes. See

@@ -1,15 +1,19 @@
-# ERP purpose and deployment handoff
+# Workshop ERP deployment handoff
 
-## What the source system does
+Workshop ERP is a free, open-source ERP backbone/template based on a working,
+field-tested implementation. The public source has been sanitized and runs as
+a synthetic localhost copy. This handoff describes how an adopter could turn
+that source into a shared deployment; it is **not** a claim that the current
+download can be exposed on a network by filling in paths and tokens.
 
-The source ERP is a company-wide **website** for a small engineering and
-manufacturing organization. Staff open the same browser/PWA application from
-workstations and phones; it is not a separate desktop app on each PC. A Node.js
-server on one active Windows host serves the frontend and API, and persists
-shared records in SQLite. A Cloudflare tunnel can expose that one host to
-authorized users outside the office. The tunnel transports requests; it does
-not render pages or 3D models on the host. Browsers render the UI and GLB
-viewer locally.
+## Intended architecture
+
+The shared ERP is a **website** opened from workstations and phones, not a
+separate desktop app on each PC. A Node.js server on one active host serves
+the frontend and API. Browsers render the UI and GLB viewer locally. Users on
+the same LAN could reach a secured host directly; remote users could reach it
+through a Cloudflare Tunnel with an access policy. Neither path is enabled in
+this public copy.
 
 The common unit of work is a project. A configured set of project directories
 is scanned and reconciled with ERP project IDs. Staff use those projects to
@@ -32,23 +36,22 @@ Typical flow:
 5. Everyone sees saved changes through the server's API/SSE. Project renames,
    missing folders and manual activation changes produce visible notices.
 
-The production design uses one active host at a time. Other enrolled PCs run
-standby watchdogs; a standby can take over after the active host fails. The
-active host alone runs the HTTP server and tunnel connector. This file-based
-coordination, network-share SQLite access, storage fencing, startup installers
-and backup pruning are operational safety mechanisms, not optional decoration.
-Changing a path or token without adapting and testing those mechanisms can
-lose data or start competing hosts.
+The design calls for one active host at a time. Standby machines may take
+over only after a tested, exclusive handoff. The active host alone runs the
+HTTP server and optional tunnel connector. Storage fencing, crash recovery,
+startup control and backups are safety requirements, not just settings.
+Changing a path or token without implementing and testing them could start
+competing hosts or lose data.
 
-## What this repository currently runs
+## What the public repository currently runs
 
 `npm.cmd start` runs `demo-server.mjs` only on `127.0.0.1`. It shows all
 25 menu views with synthetic, profile-local persistent data. Optional local
 password mode is still localhost-only. Its local project/document scans are
-confined to the selected profile. It does not use a real network share,
-watchdog, tunnel, production Helper or production database.
+confined to the selected profile. It does not use shared storage, a watchdog,
+a tunnel or the fuller backend.
 
-The original Node backend source is preserved under `app/` for adaptation,
+The fuller Node backend source is preserved under `app/` for adaptation,
 but `app/server.js` intentionally throws before any startup work. The real
 host launchers, Cloudflare executable and token are not in this repository.
 Generic wrappers with the expected `.bat`/`.cmd` names now live at the root;
@@ -63,9 +66,9 @@ has matching source and third-party notices. See
 `config.example.json` is the public, synthetic single-file starter. Its
 ordinary fields configure the **running localhost demo**: name, people,
 projects, catalogs, sample data, port, optional local OCR and security. The
-new `futureHosting` section records the intended organization, storage,
+new `futureHosting` section records the intended site, storage,
 network, Cloudflare token-file paths, one-host watchdog, Helper and backup
-settings for a later company deployment. It is parsed and checked, but
+settings for a later deployment. It is parsed and checked, but
 **never applied** by this server. Its `status` and every hosted-service
 `enabled` field must remain disabled. Put no token value or password in the
 file; `tokenSourceFile` and `tokenLocalFile` are path references only.
@@ -73,12 +76,51 @@ An installation's edited `config.json` is ignored by Git and excluded from
 the downloadable source ZIP. More field detail is in
 [`CUSTOMIZE.md`](CUSTOMIZE.md).
 
-For a different organization, use a separate local profile, generic logo and
-new local database for the demo. To build a real hosted deployment later,
-engineers must first replace the original backend's fixed share/drive/project/
-Helper/backup/process paths with validated config access, complete and review
-the fail-closed generic launchers, implement first-run hosted accounts and secure
-sessions, prove single-writer takeover and restore behavior on a test share,
-then review tunnel, source offer and permissions. Do not use the live source
-system's database or token as a test fixture. Configuration values alone do
-not turn this localhost demo into a company-wide hosted ERP.
+For a local trial, use a separate profile, generic logo and new local
+database. Never use real records, a live database or a tunnel token as a test
+fixture. Configuration values alone do not turn this source into a shared ERP.
+
+## What an adopter must implement before shared use
+
+1. **Adapt the backend and paths.** Refactor the guarded `app/server.js` and
+   its storage, CAD, Helper, backup and process modules to consume validated
+   configuration. Remove the startup guard only after those side effects are
+   isolated and tested. The local `demo-server.mjs` is not a shortcut to a
+   network host.
+2. **Choose and test shared data storage.** Decide where records and files
+   live, define migrations and consistency checks, and prove that a crash or
+   disconnected share cannot corrupt or split the data. Implement an
+   exclusive single-writer lease/fence before allowing a standby to take over.
+3. **Complete hosted accounts and authorization.** Provide first-run admin
+   creation with no default password, individual sign-in, role checks for all
+   sensitive API routes, secure sessions, CSRF protection and abuse limits.
+   The current optional password mode is only a single-process localhost
+   trial. LAN users need this protection too. If using a tunnel, Cloudflare
+   [Access can enforce an outer MFA gate](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/),
+   but it does not replace ERP permissions or protect an unguarded LAN path.
+4. **Implement non-destructive host controls.** The supplied launchers and
+   `hosting/host-control.mjs` currently refuse install/start/watch/stop/
+   restart/tunnel actions. Adapt them for a specific installation with exact
+   process identity, monitored health, exclusive takeover and reversible
+   startup registration. Test active-host failure and recovery with two
+   disposable hosts before using persistent records.
+5. **Prove backup and restore.** Make consistent snapshots, verify hashes,
+   test a complete restore, and set retention deliberately. Do not rely on
+   the localhost profile-backup script for shared-host recovery.
+6. **Configure remote access only after the app passes these gates.** A
+   remotely managed Cloudflare Tunnel can route a chosen hostname to the
+   active host; keep connector credentials in a protected file, not Git or
+   the template JSON. Apply a Cloudflare Access policy for intended users.
+   A LAN-only installation can omit the tunnel but still needs secure app
+   login, transport protection and host/firewall controls.
+7. **Finish installation-specific features.** The financial area is
+   unfinished. Helper integration, push, a bundled/tested OCR engine and
+   network project scans are not complete in this public copy. Implement only
+   the features required by a particular installation, then test their
+   permissions and data handling.
+
+The public skeleton is useful source for this work, but no hosted deployment,
+failover, live-data migration or security acceptance has been performed on
+this sanitized copy. See the official [Cloudflare Tunnel setup](https://developers.cloudflare.com/tunnel/get-started/)
+and [Cloudflare Access web-app guidance](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/)
+when designing remote access.
